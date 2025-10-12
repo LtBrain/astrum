@@ -34,3 +34,13 @@ These chips are H-Bridges, so they are each capable of powering 1 brushed DC mot
 
   
 
+## 10/12/2025 - Schematics for the IMU  
+
+There were a few IMU (inertial measurement unit) choices that I looked into, such as the Bosch BNO055, but I ultimately settled on the ICM-20948 from TDK Invensense. This chip is very accurate and low power, which is perfect for this PCB, as the batteries might be quickly depleted when 2 motors are used. 
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--72df0ab99e82732e39422fdc47060e5d34c7a54b/image.png)
+
+
+However, this chip comes with a con: it uses a 1v8 logic level, which is not directly compatible with the STM32's 3v3 logic level. This requires a way to shift the signal from 1v8 max to 3v3, in both ways. I chose to do this with 2 BSS138 MOSFETs, as the signal lines won't be at very high speeds. For this IMU, I will be using I2C for simplicity.![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNSwicHVyIjoiYmxvYl9pZCJ9fQ==--18711efa1d89d9de0c0974c783baffaa7941ce57/image.png)
+
+Figuring out the ideal mosfets and IMU did take a lot of digging through datasheets, but did yield some useful information. This chip has an auxiliary I2C bus and FSYNC pin to add other components. However, in the case of this board, I really don't need any other sensors besides the IMU for odometry, so I'll just set this to no connect.  
+
