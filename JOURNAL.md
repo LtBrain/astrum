@@ -10,7 +10,7 @@ This is my journal of the design and building process of **Astrum**.
 You can view this journal in more detail on **Hack Club Blueprint** [here](https://blueprint.hackclub.com/projects/425).
 
 
-## 10/11/2025 - Planning and Schematic!  
+## 10/11/2025 9 PM - Planning and Schematic!  
 
 I started out on my design with some rough knowledge on what I was going to use for this board. I had previously designed boards with the STM32H5 series, so I chose these as my microcontroller. This is a pretty solid choice for several reasons:
 
@@ -21,5 +21,16 @@ I started out on my design with some rough knowledge on what I was going to use 
 -   STM32CubeMX makes configuration easy
 
 With that determined, I began my KiCad project with the basic functionalities needed for the chip, such as decoupling capacitors and power rails. It was also at this time that I began to use CubeMX to determine which pins I should label for later peripheral usage, such as SPI, I2C and PWM from the timers: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTcyMywicHVyIjoiYmxvYl9pZCJ9fQ==--3db9708c9f3071386822e65e1fb766cd71a2918a/image.png)
+  
+
+## 10/11/2025 10 PM - Power System & Drivers  
+
+After sorting out the basic STM32 schematic, along with USB and storage, I decided to focus on my power supply. This board will primarily run on a 3v3 logic level, so I'll use the LDL212PV33R, a LDO that's really efficient with a 3.3v output @ 1.2 amps. Here's the circuit for that: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTcyNiwicHVyIjoiYmxvYl9pZCJ9fQ==--0091ea50c4f5976400fba2b44f29b08466aa8e6d/image.png)
+I had to add a Schottky on the input because I didn't want backfeed to happen on my computer's USB port, just in case I accidentally have a battery pack and USB connected. 
+
+After sorting my main power out, I moved onto my 2 motor drivers. This took a lot longer than expected, mainly because I got distracted by all the options out there. I had originally chosen the TB6612 from Toshiba, as this single IC would be able to control both motors bidirectionally. However, I felt that the simpler DRV8871 would be a better fit, as I could afford the space, and it made more sense in my mind to have the 2 chips spread out to dissipate more heat. TI also provides great documentation for these chips, sealing the deal. The schematic that I worked out looks like this ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTczMCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d9028ad7ad8008adddfe1db9a10cbaec27bd4d8/image.png)
+
+These chips are H-Bridges, so they are each capable of powering 1 brushed DC motor. Additionally, they use PWM to control the speed of attached motors, with 2 inputs on each one. Sending a signal on one input makes it spin a certain, controllable speed in one direction, and the other input does the same for the other direction. This means that I will have to set up a total of 4 PWM generation channels on the STM32 with CubeMX: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTczMSwicHVyIjoiYmxvYl9pZCJ9fQ==--8e9d6c02e8fed3d5f42f1099db7e9c06b6197170/image.png)
+
   
 
