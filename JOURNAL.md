@@ -34,7 +34,7 @@ These chips are H-Bridges, so they are each capable of powering 1 brushed DC mot
 
   
 
-## 10/12/2025 - Schematics for the IMU  
+## 10/12/2025 12 PM - Schematics for the IMU  
 
 There were a few IMU (inertial measurement unit) choices that I looked into, such as the Bosch BNO055, but I ultimately settled on the ICM-20948 from TDK Invensense. This chip is very accurate and low power, which is perfect for this PCB, as the batteries might be quickly depleted when 2 motors are used. 
 ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNCwicHVyIjoiYmxvYl9pZCJ9fQ==--72df0ab99e82732e39422fdc47060e5d34c7a54b/image.png)
@@ -43,4 +43,32 @@ There were a few IMU (inertial measurement unit) choices that I looked into, suc
 However, this chip comes with a con: it uses a 1v8 logic level, which is not directly compatible with the STM32's 3v3 logic level. This requires a way to shift the signal from 1v8 max to 3v3, in both ways. I chose to do this with 2 BSS138 MOSFETs, as the signal lines won't be at very high speeds. For this IMU, I will be using I2C for simplicity.![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTgxNSwicHVyIjoiYmxvYl9pZCJ9fQ==--18711efa1d89d9de0c0974c783baffaa7941ce57/image.png)
 
 Figuring out the ideal mosfets and IMU did take a lot of digging through datasheets, but did yield some useful information. This chip has an auxiliary I2C bus and FSYNC pin to add other components. However, in the case of this board, I really don't need any other sensors besides the IMU for odometry, so I'll just set this to no connect.  
+
+## 10/12/2025 8 PM - Routing the PCB  
+
+Now that the schematic is pretty much done, I started the PCB routing. The first thing I did was placing the decoupling capacitors for the STM32: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwNiwicHVyIjoiYmxvYl9pZCJ9fQ==--303456ac1d3252f98e43a3ad2e80603d4739ceee/image.png)
+The decoupling caps must be placed close to the VDD pins to reduce jitter on the supply, and should each have a close connection to ground to help with return currents. This board uses a 4 layer stackup, in Signal-Ground-Power-Signal configuration. I also placed the 25 mHz crystal in a similar fashion.
+
+Moving on, I decided to route the USBC port. This will be used for programming and debug later, so it's crucial that this is done correctly. For this connector, I will be using a ESD chip to protect the single port against any static discharge, which could damage both my STM32 and the LDO regulators that supply power: 
+
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwNywicHVyIjoiYmxvYl9pZCJ9fQ==--f3a4c8adafe7806f103210387b3ef74a64e596fe/image.png)
+
+After routing the USB port, I moved on to the SD card slot: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--bbd33fb64aef2e364472d8592af91982d0457c11/image.png)
+I'm using the SD card in SPI mode, which greatly reduces the amount of traces that I need to route, and the amount of programming I need to do down the line, especially because this is not that important. I can easily program the flash over USB, but this method makes it easier for me to load configuration files on a SD card and into the robot on competition day.
+
+Next, I focused on the SPI flash chip. This serves as an intermediary between the internal flash on the STM32, and the SD card, and is where I will be storing program files that are too large for the internal flash. Additionally, this would be great for data logging to collect some control loop info. 
+
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--5e4d014b10049ece5ee0dce3fefd17db934b6bf2/image.png)
+
+The last thing I did today was routing out the IMU. This was a bit difficult because of how small it was, and how many additional components it needed to function properly. The first order of business was placing the decoupling capacitors: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkxMCwicHVyIjoiYmxvYl9pZCJ9fQ==--52204812fe4819e7c15479ac4daa231ef78bf020/image.png)
+
+With that sorted, it was time to figure out all of the power supply. I had not started this yet, because I wanted to figure out what the most optimal placing was, and with the IMU in place, I chose the upper left side of my board. Here, I routed the 3v3 and 1v8 regulators, using lots of ground pour and thicker traces to carry more current without thermal increases: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkxMSwicHVyIjoiYmxvYl9pZCJ9fQ==--8ea166f1d0e8fbf9255261313b8f6c927ed64109/image.png)
+
+Now that the LDOs were all set up, I focused on the 1v8 regulator. This regulator supplies the ICM-20498, so I routed that in. After this, I began to configure the logic shifters, creating compact groups like these to minimize space use: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTkxMiwicHVyIjoiYmxvYl9pZCJ9fQ==--6fc33116ab25b328ed7f8ae11154ccc5f8c8f287/image.png)
+
+I set up 2 of these, and they require both 3v3 and 1v8 power to pull the signal lines up. This were most of the processing side components, and what was accomplished today allows me to focus all my attention on the drivers next time. 
+
+
+
+  
 
