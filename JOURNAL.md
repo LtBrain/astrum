@@ -72,3 +72,14 @@ I set up 2 of these, and they require both 3v3 and 1v8 power to pull the signal 
 
   
 
+## 10/13/2025 - Routing the PCB Day 2  
+
+Last time, I left off at the processing side of routing. Today, I routed the 2 motor drivers. These H-Bridges have to relatively far away from the processing side of the board so that no odd EMI and inductance issues occur. On my board, I placed them around 1.2 cm away from any of the components connect to the STM32. What I ended up with looked like this: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjE0NywicHVyIjoiYmxvYl9pZCJ9fQ==--eca3b40fcf3a8745c9f7bfb40cf927d0b519e34b/image.png)
+I tried to make this section compact so that I could have space for power headers on either side, so the electrolytic bulk caps are placed in between. I will also use copper pours here to carry more current. These motor drivers will receive power directly from the batteries, so I added some pin headers in the schematic to supply electricity: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjE0OCwicHVyIjoiYmxvYl9pZCJ9fQ==--a2aa7e34205d4cfecb1568c70b4341ac07ca197e/image.png)
+
+![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjE0OSwicHVyIjoiYmxvYl9pZCJ9fQ==--c36d1b86e8ee25e4bc8f0dac6ee5e8b6018f25bd/image.png)
+
+I also finished routing out 90 percent of the power layer traces, so this board is getting really close to production-ready. I might redesign the power layer later, as I don't have that many nets and could probably power the entire layer: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjE1MCwicHVyIjoiYmxvYl9pZCJ9fQ==--f4bf6b3bcad956a561ccc022acc3dd559a9d993e/image.png)
+
+The last thing I did was add and connect some connectivity/data pin headers for I/O.  
+
