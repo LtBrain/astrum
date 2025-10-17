@@ -83,3 +83,13 @@ I also finished routing out 90 percent of the power layer traces, so this board 
 
 The last thing I did was add and connect some connectivity/data pin headers for I/O.  
 
+## 10/17/2025 - Fixed some PCB issues  
+
+I widened the connection between the mounting pads and the actual board so fabrication would be easier: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU3OCwicHVyIjoiYmxvYl9pZCJ9fQ==--10a7b9bbd4fd016b32dab43e099feec86674145d/image.png)
+
+Routed the SWDIO and SWCLK pins to the headers: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU3OSwicHVyIjoiYmxvYl9pZCJ9fQ==--3a0d8098f85439e36efaa777b0ea42a1ade4e771/image.png)
+
+Routed all remaining, free GPIO pins to the headers: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--91a0e16d5864f29fae0a484d9961d798bac4e185/image.png)
+
+There are some odd DRC issues regarding aperture of the soldermask, so I'll ask around during a design review. Speaking of which, I sent the repo in the r/rocketry and Electrical Engineering Discord servers to get some feedback.  
+
