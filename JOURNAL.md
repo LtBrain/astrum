@@ -6,10 +6,6 @@
   ==================================================================
 -->
 
-This is my journal of the design and building process of **Astrum**.  
-You can view this journal in more detail on **Hack Club Blueprint** [here](https://blueprint.hackclub.com/projects/425).
-
-
 ## 10/11/2025 9 PM - Planning and Schematic!  
 
 I started out on my design with some rough knowledge on what I was going to use for this board. I had previously designed boards with the STM32H5 series, so I chose these as my microcontroller. This is a pretty solid choice for several reasons:
@@ -92,4 +88,12 @@ Routed the SWDIO and SWCLK pins to the headers: ![image.png](https://blueprint.h
 Routed all remaining, free GPIO pins to the headers: ![image.png](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjU4MiwicHVyIjoiYmxvYl9pZCJ9fQ==--91a0e16d5864f29fae0a484d9961d798bac4e185/image.png)
 
 There are some odd DRC issues regarding aperture of the soldermask, so I'll ask around during a design review. Speaking of which, I sent the repo in the r/rocketry and Electrical Engineering Discord servers to get some feedback.  
+
+## 10/27/2025 - CAD work?  
+
+So, I'm back? Yea, the last couple of weeks were quite hectic (lots of AP stuff), but I finally got some CAD work done. The first thing I had to design was the baseplate for the robot chassis. It needs to have 2 slots for wheels to poke through for the drive, and mounting holes for all the electronics on board. ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjA4MCwicHVyIjoiYmxvYl9pZCJ9fQ==--0b652310a77e15d173851960879778ca600950be/image.png)
+This is what I came up with for now. It has 4 mounting holes for my controller board, and the 2 holes next to each wheel hole attach to the motor mounts. I went a bit further and did some assembly and design of the motor mounts and wheel hubs (I need to convert the D profile to a square profile for the wheel) 
+![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6NjA4MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c64a034640ac0945dfcb43cabc687564b050dbd5/image.png)
+
+  
 
