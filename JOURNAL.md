@@ -97,3 +97,24 @@ This is what I came up with for now. It has 4 mounting holes for my controller b
 
   
 
+## 11/4/2025 - CAD work? Pt.2  
+
+So I'm back, and I pretty much finished the enclosure design. I essentially extruded a shell of the baseplate to get this: ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwMSwicHVyIjoiYmxvYl9pZCJ9fQ==--f2aef15b1d100f24bf056fd5bf04df7665fbdd73/image.png) and made this: ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwMiwicHVyIjoiYmxvYl9pZCJ9fQ==--77161945c9951b4f9329f667264d6629b301fe8d/image.png)
+
+Honestly, I thought this made it look a lot like a brick, so I added a slant on the front to add some aesthetics. This also has the added benefit of pushing/holding the water bottle at a lower point, so we don't have that many issues with the bottle's CG or tipping it over. ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwMywicHVyIjoiYmxvYl9pZCJ9fQ==--ae95bc6142ee64587094b6d4ae8c838a163f336b/image.png). This also means that I had to tilt the screw holes so that the cover plate could easily screw in. After doing that, I moved on to the wheel wells. I already knew that the encoders would stick out a bit for easy access, so I made this arch on each side for access to the wheels, hub and encoder. 
+
+Moving on to the encoder/hub, I designed these with a flanged bearing in mind. This just makes everything much more easy to assemble, so I ended up with this encoder holder. ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwNCwicHVyIjoiYmxvYl9pZCJ9fQ==--80aa73a2dd028d9a0e3341815a97d75eeba57fed/image.png) The AS5600 board mounts onto the holes shown on the right side, which spaces it a perfect .5 mm away from the magnet in the center of the wheel. The other side has a section to allow the flange to sit flat. ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwNSwicHVyIjoiYmxvYl9pZCJ9fQ==--2ee1b4eb88a8fae552cfbcb5bc35a63e8f7e6f18/image.png). 
+
+With all of this done, I quickly threw together the battery box, which is a bit awkward because it needs to fit 2 4xAA battery packs on top of each other to provide the required amount of power. I ended up with something like this: ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwNiwicHVyIjoiYmxvYl9pZCJ9fQ==--fb11dd6ef101f0869d9fc01a14910db9920c1d10/image.png)
+
+After the battery box, I sketched and extruded the 2 cover pieces: ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwNywicHVyIjoiYmxvYl9pZCJ9fQ==--564cda9ec660624fc29c0cd168f0437089363273/image.png) ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwOCwicHVyIjoiYmxvYl9pZCJ9fQ==--2b7aa354d9d7d0fc98351b10034fbef14a607c8a/image.png)
+
+Now that every part is complete, I started up the assembly of the entire robot. It was quite intuitive, and I had already thought of all the component positions. I decided to put the battery box right on top of the computer, because it already had mounting points on the base, which was definitely interesting. I ended up with this: ![image](https://blueprint.hackclub.com/user-attachments/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ODQwOSwicHVyIjoiYmxvYl9pZCJ9fQ==--7c87afe9e3b02bcf8420afae00925df0b99f8f86/image.png)
+
+I was able to spend a lot of time today because of Election Day (no school), so lots of progress was made. 
+
+
+
+
+  
+
