@@ -20,6 +20,7 @@
 #include "main.h"
 #include "as5600.h"
 #include "icm20948_api.h"
+#include "drv8871.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */

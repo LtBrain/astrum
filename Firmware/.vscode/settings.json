@@ -14,6 +14,7 @@
     ],
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "icm20948_api.h": "c"
+        "icm20948_api.h": "c",
+        "drv8871.h": "c"
     }
 }

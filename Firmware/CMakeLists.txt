@@ -36,6 +36,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Drivers/AS5600/src
     Drivers/icm20948/src
     Drivers/icm20948/inc
+    Drivers/DRV8871/src
 )
 
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
