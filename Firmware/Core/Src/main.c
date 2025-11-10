@@ -17,23 +17,15 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+
+//Drivers
 #include "main.h"
 #include "as5600.h"
 #include "icm20948_api.h"
 #include "drv8871.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
+//APIs
+#include "PID.h"
 
 /* USER CODE END PD */
 
