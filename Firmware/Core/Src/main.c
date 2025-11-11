@@ -27,15 +27,7 @@
 //APIs
 #include "PID.h"
 
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
+/* Private includes ----------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c3;
 
@@ -45,10 +37,6 @@ SPI_HandleTypeDef hspi3;
 TIM_HandleTypeDef htim2;
 
 PCD_HandleTypeDef hpcd_USB_DRD_FS;
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -61,44 +49,20 @@ static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_FLASH_Init(void);
-/* USER CODE BEGIN PFP */
 
-/* USER CODE END PFP */
+ 
+AS5600_HandleTypeDef leftEncoder;
+AS5600_HandleTypeDef rightEncoder;
 
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
   /* MCU Configuration--------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
 
   /* Configure the peripherals common clocks */
   PeriphCommonClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -109,19 +73,22 @@ int main(void)
   MX_TIM2_Init();
   MX_I2C3_Init();
   MX_FLASH_Init();
-  /* USER CODE BEGIN 2 */
+  
+  //AS5600 INIT
+  leftEncoder.hi2c = &hi2c1;
+  rightEncoder.hi2c = &hi2c3;
+  
+  uint16_t leftAngle, rightAngle;
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+    AS5600_ReadAngle(&leftEncoder, &leftAngle);
+    AS5600_ReadAngle(&rightEncoder, &rightAngle);
 
-    /* USER CODE BEGIN 3 */
+    float leftAngleDeg = (leftAngle * 360) / 4096;
+    float rightAngleDeg = (rightAngle *360) / 4096;
   }
-  /* USER CODE END 3 */
+  
 }
 
 /**

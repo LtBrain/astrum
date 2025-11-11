@@ -39,3 +39,16 @@ double PIDCalculate(PID_Constants *pid, double position, double setpoint) {
     pid->output = P + I + D;
     return pid->output;
 }
+
+double getP(double P) {
+    return(P);
+};
+
+double getI(double I) {
+    return(I);
+};
+
+double getD(double D) {
+    return(D);
+};
+
