@@ -2,10 +2,28 @@
     "configurations": [
         {
             "name": "STM32",
+            "compilerPath": "C:/ST/STM32CubeCLT_1.19.0/GNU-tools-for-STM32/bin/arm-none-eabi-gcc.exe",
             "compileCommands": "${workspaceFolder}/build/Debug/compile_commands.json",
-            "intelliSenseMode": "windows-msvc-x64",
+            "intelliSenseMode": "gcc-arm",
+            "defines": [
+                "STM32H523xx",
+                "USE_HAL_DRIVER",
+                "__GNUC__"
+            ],
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32H5xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H5xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include"
+            ],
             "cStandard": "c17",
-            "cppStandard": "c++17"
+            "cppStandard": "c++17",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/Core/Inc",
+                    "${workspaceFolder}/Drivers"
+                ]
+            }
         }
     ],
     "version": 4

@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 
+/* USER CODE BEGIN 2 */
 //Drivers
 #include "main.h"
 #include "as5600.h"
@@ -26,6 +27,7 @@
 
 //APIs
 #include "PID.h"
+/* USER CODE END 2 */
 
 /* Private includes ----------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
@@ -35,6 +37,7 @@ SPI_HandleTypeDef hspi2;
 SPI_HandleTypeDef hspi3;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim6;
 
 PCD_HandleTypeDef hpcd_USB_DRD_FS;
 
@@ -47,12 +50,31 @@ static void MX_SPI3_Init(void);
 static void MX_USB_PCD_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_TIM6_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_FLASH_Init(void);
 
- 
+/* USER CODE BEGIN 3 */
 AS5600_HandleTypeDef leftEncoder;
 AS5600_HandleTypeDef rightEncoder;
+
+#define ICM20948_I2C_ADDRESS 0x68 << 1  // Adjust based on AD0 pin
+
+int8_t usr_write(const uint8_t addr, const uint8_t *data, const uint32_t len) {
+    // Write 'len' bytes to register 'addr'
+    HAL_StatusTypeDef status = HAL_I2C_Mem_Write(&hi2c1, ICM20948_I2C_ADDRESS, addr, I2C_MEMADD_SIZE_8BIT, (uint8_t *)data, len, 100);
+    return status == HAL_OK ? 0 : -1;
+}
+
+int8_t usr_read(const uint8_t addr, uint8_t *data, const uint32_t len) {
+    // Read 'len' bytes from register 'addr' into 'data'
+    HAL_StatusTypeDef status = HAL_I2C_Mem_Read(&hi2c1, ICM20948_I2C_ADDRESS, addr, I2C_MEMADD_SIZE_8BIT, data, len, 100);
+    return status == HAL_OK ? 0 : -1;
+}
+
+/* USER CODE END 3 */
+
+volatile uint8_t timer6Flag = 0;
 
 int main(void)
 {
@@ -71,23 +93,42 @@ int main(void)
   MX_USB_PCD_Init();
   MX_I2C1_Init();
   MX_TIM2_Init();
+  MX_TIM6_Init();
   MX_I2C3_Init();
   MX_FLASH_Init();
   
+  /* USER CODE BEGIN 4 */
+
+  HAL_TIM_Base_Start_IT(&htim6); 
+
   //AS5600 INIT
   leftEncoder.hi2c = &hi2c1;
   rightEncoder.hi2c = &hi2c3;
-  
+
   uint16_t leftAngle, rightAngle;
 
   while (1)
   {
-    AS5600_ReadAngle(&leftEncoder, &leftAngle);
-    AS5600_ReadAngle(&rightEncoder, &rightAngle);
+    if (timer6Flag) {
+      timer6Flag = 0;
 
-    float leftAngleDeg = (leftAngle * 360) / 4096;
-    float rightAngleDeg = (rightAngle *360) / 4096;
+      AS5600_ReadAngle(&leftEncoder, &leftAngle);
+      AS5600_ReadAngle(&rightEncoder, &rightAngle);
+
+      float leftAngleDeg = (leftAngle * 360) / 4096;
+      float rightAngleDeg = (rightAngle *360) / 4096;
+    }
   }
+
+  //ICM20948 INIT
+  icm20948_return_code_t ret = ICM20948_RET_OK;
+  icm20948_settings_t settings;
+  icm20948_gyro_t gyro_data;
+  icm20948_accel_t accel_data;
+
+  // ret = icm20948_init(usr_read, usr_write, usr_delay_us);
+
+  /* USER CODE END 4 */
   
 }
 
@@ -459,6 +500,56 @@ static void MX_TIM2_Init(void)
   HAL_TIM_MspPostInit(&htim2);
 
 }
+
+//TIMER FOR TIMESTEP
+static void MX_TIM6_Init(void)
+{
+    /* USER CODE BEGIN TIM6_Init 0 */
+
+    /* USER CODE END TIM6_Init 0 */
+
+    TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+    htim6.Instance = TIM6;
+    htim6.Init.Prescaler = 25000 - 1;  // adjust depending on your clock to get 1 kHz
+    htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim6.Init.Period = 10 - 1;          // 1 kHz update assuming 250 MHz timer clock
+    htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+    if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    /* USER CODE BEGIN TIM6_Init 1 */
+
+    HAL_NVIC_SetPriority(TIM6_IRQn, 0, 0);  // Set priority (0 = highest)
+    HAL_NVIC_EnableIRQ(TIM6_IRQn);   
+
+    /* USER CODE END TIM6_Init 1 */
+}
+
+void TIM6_DAC_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim6);
+}
+
+
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if (htim->Instance == TIM6)
+    {
+        timer6Flag = 1; // signal main loop
+    }
+}
+
 
 /**
   * @brief USB Initialization Function
