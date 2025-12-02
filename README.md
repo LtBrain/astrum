@@ -11,4 +11,10 @@ Astrum was created for the purpose of "placing" at the Mid-Hudson Valley Regiona
 <img width="767" height="732" alt="wirediagram drawio" src="https://github.com/user-attachments/assets/9d2ca931-85dc-44da-ab10-a6e999b6706e" />
   
 ## BOM
+Here's the BOM: 
+
+
+This covers the total sum of all the major parts.  
+
+There is a more in depth BOM for the PCB assembly components itself: [BOM-astrum-JLCPCB Assembly Order.xls](https://github.com/user-attachments/files/23870804/BOM-astrum-JLCPCB.Assembly.Order.xls)
 
