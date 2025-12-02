@@ -11,8 +11,26 @@ Astrum was created for the purpose of "placing" at the Mid-Hudson Valley Regiona
 <img width="767" height="732" alt="wirediagram drawio" src="https://github.com/user-attachments/assets/9d2ca931-85dc-44da-ab10-a6e999b6706e" />
   
 ## BOM
-Here's the BOM: 
+Here's the BOM:  
 
+ |Item #|Name                                       |Link                                     |Amount               |Cost   |
+|------|-------------------------------------------|-----------------------------------------|---------------------|-------|
+|1     |PCB + Assembly                             |jlcpcb.com                               |1 order (2 boards)   |$104.59|
+|2     |25GA-370 Brushed Motors                    |https://www.amazon.com/dp/B07JFF3TH9?th=1|2                    |$25.94 |
+|3     |Alinan AS5600 Encoder Boards               |as5600 link                              |1 pack (6 Encoders)  |$14.99 |
+|4     |STEMMA QT to Male Header Cable             |https://www.adafruit.com/product/4209    |2                    |$1.90  |
+|5     |2800 mAh AA NIMH Batteries                 |NIMH batteries link                      |1 pack (12 Batteries)|$19.99 |
+|6     |4 x AA Battery Holder                      |https://www.adafruit.com/product/830     |2                    |$5.90  |
+|7     |M3 16mm SHCS                               |M3 SHCS link                             |50                   |$6.49  |
+|8     |BaneBots T6 Wheel, 2-3/8" x 0.6", Hub Mount|https://banebots.com/t61p-242bp/         |2                    |$6.60  |
+|9     |MF128ZZ Bearings - 8mm x 12mm x 3.5mm      |MF128ZZ Bearings                         |1 pack (10 bearings) |$9.29  |
+|10    |Polulu 1/2 Inch Metal Ball Caster Wheels   |https://www.pololu.com/product/953       |4                    |$11.80 |
+|11    |Pin Headers                                |https://www.adafruit.com/product/3002    |3                    |$1.50  |
+|12    |All Shipping Costs (Estimate)              |                                         |1                    |$45    |
+|      |                                           |                                         |                     |Total: |
+|      |                                           |                                         |                     |$253.99|
+ 
+https://github.com/LtBrain/astrum/blob/main/Astrum%20BOM%20-%20Sheet1.csv
 
 This covers the total sum of all the major parts.  
 
