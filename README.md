@@ -34,5 +34,7 @@ https://github.com/LtBrain/astrum/blob/main/Astrum%20BOM%20-%20Sheet1.csv
 
 This covers the total sum of all the major parts.  
 
-There is a more in depth BOM for the PCB assembly components itself: [BOM-astrum-JLCPCB Assembly Order.xls](https://github.com/user-attachments/files/23870804/BOM-astrum-JLCPCB.Assembly.Order.xls)
+There is a more in depth BOM for the PCB assembly components itself: [BOM-astrum-JLCPCB Assembly Order.xls](https://github.com/user-attachments/files/23870804/BOM-astrum-JLCPCB.Assembly.Order.xls)  
+  
+REVIEWERS: Do note that I am aware of the high PCB fabrication costs + shipping, but this is the cheapest I could find it for (at JLCPCB). Additionally, the global standard direct shipping option will not work for this board. Sadly, JLCPCB requires the purchase to be under 59.99 dollars, which this board exceeds. This is why it got so expensive. Also do note that I have optimized my BOMs to be as cheap as possible to lower the amount of money spent by Hackclub. 
 
