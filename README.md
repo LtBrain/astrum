@@ -15,7 +15,7 @@ Here's the BOM:
 
  |Item #|Name                                       |Link                                     |Amount               |Cost   |
 |------|-------------------------------------------|-----------------------------------------|---------------------|-------|
-|1     |PCB + Assembly                             |jlcpcb.com                               |1 order (2 boards)   |$104.59|
+|1     |PCB + Assembly + Shipping                  |jlcpcb.com                               |1 order (2 boards)   |$170.40|
 |2     |25GA-370 Brushed Motors                    |https://www.aliexpress.us/item/3256807346702379.html?|2                    |$12.94 |
 |3     |Alinan AS5600 Encoder Boards               |https://www.aliexpress.us/item/3256809413529733.html?                              |1 pack (5 Encoders)  |$6.09 |
 |4     |STEMMA QT to Male Header Cable             |https://www.aliexpress.com/item/3256805529535394.html?    |2                    |$2.78 |
@@ -26,9 +26,8 @@ Here's the BOM:
 |9     |MF128ZZ Bearings - 8mm x 12mm x 3.5mm      |https://www.aliexpress.com/item/3256807566213882.html?                      |1 pack (8 bearings) |$6.10  |
 |10    |Polulu 1/2 Inch Metal Ball Caster Wheels   |https://www.aliexpress.com/item/3256808387820251.html?     |4                    |$4.63 |
 |11    |Pin Headers                                |https://www.aliexpress.com/item/2255800801798474.html?    |10                    |$1.69  |
-|12    |All Shipping Costs (Estimate)              |                                         |1                    |$45    |
 |      |                                           |                                         |                     |Total: |
-|      |                                           |                                         |                     |$199.99|
+|      |                                           |                                         |                     |$220.80|
  
 https://github.com/LtBrain/astrum/blob/main/Astrum%20BOM%20-%20Sheet1.csv
 
