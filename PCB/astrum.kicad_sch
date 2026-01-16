@@ -8660,12 +8660,6 @@
 		(uuid "6535031a-05da-4999-977b-aab8a628d5b2")
 	)
 	(junction
-		(at 165.1 181.61)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "658f8be6-12bc-4056-9691-141f6a367115")
-	)
-	(junction
 		(at 54.61 252.73)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -11759,6 +11753,28 @@
 			)
 		)
 	)
+	(global_label "IMU_INT1"
+		(shape input)
+		(at 83.82 69.85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1058a720-bf70-4c03-ad70-5175202aa4b8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 95.9976 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GPIO3"
 		(shape input)
 		(at 250.19 153.67 0)
@@ -11869,28 +11885,6 @@
 			)
 		)
 	)
-	(global_label "IMU_INT1"
-		(shape input)
-		(at 83.82 69.85 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "200ef414-b624-4aa2-936c-b35847ffe6e6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.7146 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SPI1_MISO"
 		(shape input)
 		(at 261.62 130.81 0)
@@ -11935,7 +11929,7 @@
 			)
 		)
 	)
-	(global_label "IMU_INT2"
+	(global_label "IMU_INT"
 		(shape input)
 		(at 187.96 133.35 180)
 		(fields_autoplaced yes)
@@ -12881,7 +12875,7 @@
 			)
 		)
 	)
-	(global_label "IMU_INT2"
+	(global_label "IMU_INT"
 		(shape input)
 		(at 83.82 72.39 0)
 		(fields_autoplaced yes)
@@ -14887,7 +14881,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LDL212PV33R:SON50P200X200X80-7N"
+		(property "Footprint" "LDL212PV33R:DFN_V33R_STM"
 			(at 85.09 257.81 0)
 			(effects
 				(font
@@ -17489,7 +17483,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LGA_M6DSR_STM"
+		(property "Footprint" "LSM6DSR:LGA_M6DSR_STM"
 			(at 33.02 -5.08 0)
 			(effects
 				(font
@@ -22305,73 +22299,6 @@
 			(project ""
 				(path "/3a9e7f6a-5f50-41a2-a6d2-71b4d0f27afd"
 					(reference "R1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDD")
-		(at 165.1 181.61 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e3c77472-0d51-424c-bd23-78b4372e9859")
-		(property "Reference" "#PWR034"
-			(at 168.91 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VDD"
-			(at 161.29 181.6099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 165.1 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 165.1 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VDD\""
-			(at 165.1 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "161d545d-f720-4fac-93b1-7faf88edf7f7")
-		)
-		(instances
-			(project "aero"
-				(path "/3a9e7f6a-5f50-41a2-a6d2-71b4d0f27afd"
-					(reference "#PWR034")
 					(unit 1)
 				)
 			)
